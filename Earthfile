@@ -1,0 +1,21 @@
+FROM python:3
+
+RUN pip install grpcio protobuf pycodestyle
+
+WORKDIR /kvclient
+
+code:
+    COPY client.py .
+    COPY github.com/earthly/earthly-example-proto:example+proto-py/py-pb/*.py .
+
+lint:
+    FROM +code
+    RUN pycodestyle client.py
+
+kvclient-docker:
+    FROM +code
+    SAVE IMAGE as kvclient:latest
+
+all:
+    BUILD +lint
+    BUILD +kvclient-docker
