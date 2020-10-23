@@ -6,7 +6,7 @@ WORKDIR /kvclient
 
 code:
     COPY client.py .
-    COPY github.com/earthly/earthly-example-proto:example+proto-py/py-pb/*.py .
+    COPY github.com/earthly/earthly-example-proto:main+proto-py/py-pb/*.py .
 
 lint:
     FROM +code
