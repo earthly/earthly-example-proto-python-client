@@ -35,4 +35,3 @@ for arg in sys.argv[1:]:
         else:
             value = get_response.value
             print(f'server returned value "{value}" for key "{key}"')
-

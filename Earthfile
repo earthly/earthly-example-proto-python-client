@@ -1,6 +1,6 @@
 FROM python:3
 
-RUN pip install grpcio protobuf
+RUN pip install grpcio protobuf pycodestyle
 
 WORKDIR /kvclient
 
@@ -10,14 +10,10 @@ code:
 
 lint:
     FROM +code
-    RUN echo TODO
-
-kvclient:
-    FROM +code
+    RUN pycodestyle client.py
 
 kvclient-docker:
-    FROM +kvclient
-    ENTRYPOINT python3 client.py
+    FROM +code
     SAVE IMAGE as kvclient:latest
 
 all:
