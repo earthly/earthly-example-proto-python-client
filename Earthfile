@@ -15,7 +15,7 @@ lint:
 
 kvclient-docker:
     FROM +code
-    SAVE IMAGE as kvclient:latest
+    SAVE IMAGE kvclient:latest
 
 all:
     BUILD +lint
